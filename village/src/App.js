@@ -25,7 +25,8 @@ class App extends Component {
   // You'll need to make sure you have the right properties on state and pass them down to props.
 
   componentDidMount() {
-    axios.get(smurfsURL)
+    axios
+    .get(smurfsURL)
     .then(res => {
       this.setState({smurfs: res.data})
     })
@@ -34,8 +35,6 @@ class App extends Component {
       this.setState({error: err.message})
     })
   }
-
-  a
 
   render() {
     return (
