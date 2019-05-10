@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
+const smurfsURL = 'http://localhost:3333/smurfs/'
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -12,7 +15,15 @@ class SmurfForm extends Component {
 
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
+    axios
+    .post(smurfsURL, this.state)
+    .then(res => {
+      this.setState({smurfs: res.data})
+    })
+    .then(this.props.history.push("/"))
+    .catch(err => {
+      console.log(err);
+    })
 
     this.setState({
       name: '',
